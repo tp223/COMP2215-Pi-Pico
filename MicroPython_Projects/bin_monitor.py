@@ -4,7 +4,7 @@
 import upip
 import time
 import os
-from picographics import PicoGraphics, DISPLAY_PICO_DISPLAY_2, PEN_P4
+from picographics import PicoGraphics, DISPLAY_PICO_DISPLAY, PEN_P4
 from pimoroni import RGBLED, Button
 import network
 import machine
@@ -21,7 +21,7 @@ password = 'WiFi Password'
 houseURL = "https://www.southampton.gov.uk/whereilive/waste-calendar?UPRN=..."
 
 # Setup display
-display = PicoGraphics(display=DISPLAY_PICO_DISPLAY_2, pen_type=PEN_P4, rotate=0)
+display = PicoGraphics(display=DISPLAY_PICO_DISPLAY, pen_type=PEN_P4, rotate=0)
 
 # Seyup LED
 led = RGBLED(6, 7, 8)
@@ -218,11 +218,11 @@ while True:
         clear()
         display.set_backlight(0.5)
         display.set_pen(WHITE)
-        centerText("TODAYS COLLECTION", 10, 3)
+        centerText("TODAYS COLLECTION", 10, 2)
         yPos = 40
         for item in todaysEvents:
-            centerText(item["name"], yPos, 5)
-            yPos += 50
+            centerText(item["name"], yPos, 3)
+            yPos += 30
         display.update()
         led.set_rgb(0, 255, 0)
         dismissedLED = False
@@ -231,16 +231,16 @@ while True:
         clear()
         display.set_backlight(0.5)
         display.set_pen(WHITE)
-        centerText("NO", 20, 5)
-        centerText("COLLECTION", 60, 5)
-        centerText("TODAY", 100, 5)
+        centerText("NO", 10, 3)
+        centerText("COLLECTION", 40, 3)
+        centerText("TODAY", 70, 3)
         if len(nextEvent) > 0:
-            centerText("Next Collection", 140, 2)
-            centerText(str(nextEvent[0]["day"]) + "/" + str(nextEvent[0]["month"]) + "/" + str(nextEvent[0]["year"]), 160, 2)
+            centerText("Next Collection", 100, 1)
+            centerText(str(nextEvent[0]["day"]) + "/" + str(nextEvent[0]["month"]) + "/" + str(nextEvent[0]["year"]), 110, 1)
             nextItemsRender = ""
             for event in nextEvent:
                 nextItemsRender = nextItemsRender + " " + event["name"]
-            centerText(nextItemsRender.strip(), 180, 2)
+            centerText(nextItemsRender.strip(), 120, 1)
         display.update()
         led.set_rgb(0, 0, 0)
         dismissedLED = True
