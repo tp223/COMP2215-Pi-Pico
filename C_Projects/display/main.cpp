@@ -20,10 +20,9 @@ Button button_y(PicoDisplay::Y);
 int WIDTH = st7789.width;
 int HEIGHT = st7789.height;
 
+// Highlight box on screen
 void highlightColour(int colour, int score) {
-    // set the backlight to a value between 0 and 255
-    // the backlight is driven via PWM and is gamma corrected by our
-    // library to give a gorgeous linear brightness range.
+    // Set backlight
     st7789.set_backlight(200);
 
     // background colour
@@ -95,10 +94,12 @@ void highlightColour(int colour, int score) {
     st7789.update(&graphics);
 }
 
+// Draw unselected screen
 void drawDefault(int score) {
     highlightColour(4, score);
 }
 
+// Draw Game Over screen
 void drawFailed() {
     st7789.set_backlight(200);
 
