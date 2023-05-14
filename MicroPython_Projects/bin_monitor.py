@@ -23,7 +23,7 @@ houseURL = "https://www.southampton.gov.uk/whereilive/waste-calendar?UPRN=..."
 # Setup display
 display = PicoGraphics(display=DISPLAY_PICO_DISPLAY, pen_type=PEN_P4, rotate=0)
 
-# Seyup LED
+# Setup LED
 led = RGBLED(6, 7, 8)
 
 # Backlight to 50%
